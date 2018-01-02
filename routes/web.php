@@ -12,6 +12,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('shop.index');
-});
+Route::get('/', [
+    'uses' => 'ProductsController@index',
+    'as' => 'product.index'
+]);
