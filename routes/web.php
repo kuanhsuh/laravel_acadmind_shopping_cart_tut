@@ -13,12 +13,11 @@
 */
 
 Route::get('login', 'UserController@getSignin')->name('login');
+
 Route::get('/', [
     'uses' => 'ProductsController@index',
     'as' => 'product.index'
 ]);
-
-
 
 Route::group(['prefix' => 'user'], function() {
     Route::group(['middleware' => 'guest'], function(){
@@ -54,3 +53,8 @@ Route::group(['prefix' => 'user'], function() {
         ]);
     });
 });
+
+Route::get('/add-to-cart/{id}', [
+    'uses' => 'ProductsController@getAddToCart',
+    'as' => 'product.addToCart'
+]);
