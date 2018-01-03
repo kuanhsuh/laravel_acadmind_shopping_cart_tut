@@ -12,6 +12,7 @@
 <body>
   @include('partials.header')
   <div class="container">
+    @include('partials.messages')
     @yield('content')
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
