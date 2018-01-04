@@ -58,3 +58,18 @@ Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductsController@getAddToCart',
     'as' => 'product.addToCart'
 ]);
+
+Route::get('/shopping-cart', [
+    'uses' => 'ProductsController@getCart',
+    'as' => 'product.shoppingCart'
+]);
+
+Route::get('/checkout', [
+    'uses' => 'ProductsController@getCheckout',
+    'as' => 'checkout'
+]);
+
+Route::post('/checkout', [
+    'uses' => 'ProductsController@postCheckout',
+    'as' => 'checkout'
+]);
