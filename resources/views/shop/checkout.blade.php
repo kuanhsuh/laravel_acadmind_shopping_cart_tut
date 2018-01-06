@@ -13,13 +13,13 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" class="form-control" required>
+            <input name="name" type="text" id="name" class="form-control" required>
           </div>
         </div> <!-- col -->
         <div class="col-xs-12">
           <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" id="address" class="form-control" required>
+            <input name="address" type="text" id="address" class="form-control" required>
           </div>
         </div> <!-- col -->
         <div class="form-row">
