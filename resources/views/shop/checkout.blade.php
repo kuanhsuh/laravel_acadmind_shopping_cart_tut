@@ -22,7 +22,17 @@
             <input type="text" id="address" class="form-control" required>
           </div>
         </div> <!-- col -->
-        <div class="col-xs-12">
+        <div class="form-row">
+            <label for="card-element">
+              Credit or debit card
+            </label>
+            <div id="card-element">
+              <!-- a Stripe Element will be inserted here. -->
+            </div>
+            <!-- Used to display Element errors -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+        {{--  <div class="col-xs-12">
           <div class="form-group">
             <label for="card-name">Card Holder Name</label>
             <input type="text" id="card-name" class="form-control" required>
@@ -45,13 +55,13 @@
             <label for="card-expiry-year">Expiration Year</label>
             <input type="text" id="card-expiry-year" class="form-control" required>
           </div>
-        </div> <!-- col -->
-        <div class="col-xs-12">
+        </div> <!-- col -->  --}}
+        {{--  <div class="col-xs-12">
           <div class="form-group">
             <label for="card-cvc">CVC</label>
             <input type="text" id="card-cvc" class="form-control" required>
           </div>
-        </div> <!-- col -->
+        </div> <!-- col -->  --}}
       </div>
       {{ csrf_field() }}
       <button type="submit" class="btn btn-success">Buy Now</button>
@@ -59,4 +69,9 @@
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="{{ asset('js/checkout.js') }}"></script>
 @endsection
