@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use URL;
+use Session;
 
 class UserController extends Controller
 {
@@ -22,9 +24,15 @@ class UserController extends Controller
         ]);
         $user->save();
         Auth::login($user);
+        if(Session::has('oldUrl')) {
+            $oldUrl = Session::get('oldUrl');
+            Session::forget('oldUrl');
+            return redirect()->to($oldUrl);
+        }
         return redirect()->route('product.index');
     }
     public function getSignin(){
+        Session::put('oldUrl', URL::previous());
         return view('user.signin');
     }
     public function postSignin(Request $request){
@@ -42,6 +50,11 @@ class UserController extends Controller
             return back()->withErrors([
                 'message' => 'Please check your password'
             ]);
+        }
+        if(Session::has('oldUrl')) {
+            $oldUrl = Session::get('oldUrl');
+            Session::forget('oldUrl');
+            return redirect()->to($oldUrl);
         }
         return redirect()->route('user.profile')->with('success', 'user logged in');
     }
