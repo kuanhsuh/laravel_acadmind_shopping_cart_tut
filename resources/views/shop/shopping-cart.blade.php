@@ -18,8 +18,8 @@
                   Action <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Reduce One</a></li>
-                  <li><a href="#">Reduce ALl</a></li>
+                  <li><a href="{{ route('product.reduceByOne', ['id' => $product['item']['id']])}}">Reduce One</a></li>
+                  <li><a href="{{ route('product.removeItem', ['id' => $product['item']['id']])}}">Remove All</a></li>
                 </ul>
               </div>
             </li>
