@@ -59,7 +59,12 @@ class UserController extends Controller
         return redirect()->route('user.profile')->with('success', 'user logged in');
     }
     public function getProfile(){
-        return view('user.profile');
+        $orders = auth()->user()->orders;
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('user.profile', ['orders' => $orders]);
     }
     public function getLogout(){
         // Auth::logout();
